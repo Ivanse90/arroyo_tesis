@@ -95,7 +95,8 @@ DATABASES = {
         "NAME": "universidad",
         "USER": "postgres",
         "PASSWORD": "postgres",
-        "HOST": "localhost",
+        #"HOST": "localhost",
+        "HOST": "postgresbd.ctumiwa20y4y.us-east-1.rds.amazonaws.com",
         "PORT": "5432"    
         }
 }

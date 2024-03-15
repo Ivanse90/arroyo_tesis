@@ -22,6 +22,11 @@ import asyncio
 
 @api_view(['GET','POST'])
 def data_api_view(request):
+    """
+    Api tipo Get,POST
+    encargada de obtener e Insertar
+    de eventos en la base de datos
+    """
     if request.method == 'GET':
         data_tw = data_tweet.objects.all()
         data_serializer = DataSerializer(data_tw, many = True)
@@ -35,6 +40,11 @@ def data_api_view(request):
 
 @api_view(['GET','PUT','DELETE'])
 def data_detail_api_view(request,pk=None):
+    """
+    Api tipo Get,PUT, DELETE
+    encargada de obtener,actualizar y eliminar datos
+    de eventos en la base de datos
+    """
     if request.method == 'GET':
         data_tw = data_tweet.objects.filter(id = pk).first()
         data_serializer = DataSerializer(data_tw)
@@ -55,6 +65,11 @@ def data_detail_api_view(request,pk=None):
 
 @api_view(['GET'])
 def data_dic_view(request):
+    """
+    Api tipo Get
+    encargada de obtener los arroyos y su cantidad de eventos
+    desde la Base de datos
+    """
     if request.method == 'GET':
         data_tw = data_tweet.objects.all()
         data_serializer = DataSerializer(data_tw, many = True)
@@ -70,6 +85,10 @@ def data_dic_view(request):
 
 @api_view(['GET'])
 def apiArroyo(request):
+    """
+    Api tipo Get
+    encargada de obtener datos de twitter e insertarlos en la bd
+    """
     desbor_obj = CallData.runData()
     conta = 0
     for i in range(len(desbor_obj[0])):
@@ -85,7 +104,10 @@ def apiArroyo(request):
 
 @api_view(['GET'])
 def procesa_arroyo(request):
-
+    """
+    Api tipo Get
+    encargada de procesar datos de evento de arroyo
+    """
     data_ht = History_Tweet.objects.filter(checked=1)[:2]
     history_serializer = HistorySerializer(data_ht, many = True)
     listdata = UseModelData.data_list(history_serializer.data)
