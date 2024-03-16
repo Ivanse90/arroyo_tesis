@@ -58,7 +58,7 @@ class Arroyo():
         df['Lat_Tweet'] = corlat 
         df['Long_Tweet'] = corlon
 
-        arroyo = f"/home/user/Tesis/Back/Arroyo_back/arroyos/projects/geo_data/ArroyoBarranquilla.geojson"
+        arroyo = f"../arroyos/projects/geo_data/ArroyoBarranquilla.geojson"
         gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.Long_Tweet,df.Lat_Tweet))
         gdf = gdf.set_crs('epsg:4326')
         df_arroyo = gpd.read_file(open(arroyo))
